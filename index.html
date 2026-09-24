@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="YABI Store - Tienda online moderna y elegante" />
+  <title>YABI Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="topbar">Envíos disponibles · Consultá por disponibilidad y entregas</div>
+
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="YABI Store inicio">
+      <span class="brand-mark">Y</span>
+      <span class="brand-text">YABI <strong>Store</strong></span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Navegación principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#productos">Productos</a>
+      <a href="#categorias">Categorías</a>
+      <a href="#nosotros">Nosotros</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" id="searchToggle" aria-label="Buscar">⌕</button>
+      <button class="cart-btn" id="cartOpen" aria-label="Abrir carrito">
+        <span>Carrito</span>
+        <b id="cartCount">0</b>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <span class="eyebrow">Nueva colección</span>
+        <h1>Detalles que hacen <em>especial</em> cada día.</h1>
+        <p>Descubrí una selección cuidada de productos con estilo, calidad y ese toque único que define a YABI Store.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#productos">Ver colección</a>
+          <a class="btn btn-secondary" href="#categorias">Explorar categorías</a>
+        </div>
+        <div class="hero-benefits">
+          <span>Compra simple</span>
+          <span>Atención personalizada</span>
+          <span>Pedidos por WhatsApp</span>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-card hero-card-main">
+          <span>YABI</span>
+          <strong>Style with love</strong>
+        </div>
+        <div class="hero-orb orb-one"></div>
+        <div class="hero-orb orb-two"></div>
+        <div class="mini-card mini-card-one">Elegancia</div>
+        <div class="mini-card mini-card-two">Detalles únicos</div>
+      </div>
+    </section>
+
+    <section class="categories-section" id="categorias">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Comprá a tu manera</span>
+          <h2>Categorías destacadas</h2>
+        </div>
+        <p>Encontrá más rápido lo que estás buscando.</p>
+      </div>
+
+      <div class="category-grid">
+        <button class="category-card" data-category="Accesorios">
+          <span class="category-icon">✦</span>
+          <strong>Accesorios</strong>
+          <small>Detalles que completan tu look</small>
+        </button>
+        <button class="category-card" data-category="Belleza">
+          <span class="category-icon">♡</span>
+          <strong>Belleza</strong>
+          <small>Pequeños favoritos para vos</small>
+        </button>
+        <button class="category-card" data-category="Hogar">
+          <span class="category-icon">⌂</span>
+          <strong>Hogar</strong>
+          <small>Objetos lindos para tus espacios</small>
+        </button>
+        <button class="category-card" data-category="Regalos">
+          <span class="category-icon">◇</span>
+          <strong>Regalos</strong>
+          <small>Ideas para sorprender</small>
+        </button>
+      </div>
+    </section>
+
+    <section class="products-section" id="productos">
+      <div class="section-heading products-heading">
+        <div>
+          <span class="eyebrow">Selección YABI</span>
+          <h2>Productos destacados</h2>
+        </div>
+        <div class="filters" role="group" aria-label="Filtrar productos">
+          <button class="filter-btn active" data-filter="Todos">Todos</button>
+          <button class="filter-btn" data-filter="Accesorios">Accesorios</button>
+          <button class="filter-btn" data-filter="Belleza">Belleza</button>
+          <button class="filter-btn" data-filter="Hogar">Hogar</button>
+          <button class="filter-btn" data-filter="Regalos">Regalos</button>
+        </div>
+      </div>
+
+      <div class="search-panel" id="searchPanel">
+        <input id="searchInput" type="search" placeholder="Buscar productos..." autocomplete="off" />
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section class="promo-section">
+      <div>
+        <span class="eyebrow light">YABI Store</span>
+        <h2>Encontrá ese detalle que estabas buscando.</h2>
+      </div>
+      <a href="#productos" class="btn btn-light">Comprar ahora</a>
+    </section>
+
+    <section class="about-section" id="nosotros">
+      <div class="about-card">
+        <span class="eyebrow">Nuestra esencia</span>
+        <h2>Una tienda pensada para disfrutar cada elección.</h2>
+        <p>En YABI Store queremos que comprar sea simple, agradable y cercano. Por eso seleccionamos productos lindos, útiles y especiales, con atención personalizada en cada pedido.</p>
+      </div>
+      <div class="about-points">
+        <article><b>01</b><div><strong>Selección cuidada</strong><p>Productos elegidos pensando en calidad y estilo.</p></div></article>
+        <article><b>02</b><div><strong>Atención cercana</strong><p>Consultá por WhatsApp antes de confirmar tu compra.</p></div></article>
+        <article><b>03</b><div><strong>Compra práctica</strong><p>Armá tu carrito y enviá tu pedido en segundos.</p></div></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <span class="brand-mark">Y</span>
+      <div><strong>YABI Store</strong><small>Detalles que inspiran.</small></div>
+    </div>
+    <div class="footer-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#productos">Productos</a>
+      <a href="#categorias">Categorías</a>
+    </div>
+    <p>© <span id="year"></span> YABI Store. Todos los derechos reservados.</p>
+  </footer>
+
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Carrito de compras">
+    <div class="cart-header">
+      <div><span class="eyebrow">Tu selección</span><h3>Carrito</h3></div>
+      <button class="close-btn" id="cartClose" aria-label="Cerrar carrito">×</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-empty" id="cartEmpty">Tu carrito todavía está vacío.</div>
+    <div class="cart-footer">
+      <div class="cart-total"><span>Total</span><strong id="cartTotal">Gs. 0</strong></div>
+      <button class="btn btn-primary checkout-btn" id="checkoutBtn">Pedir por WhatsApp</button>
+      <small>El pedido se enviará como mensaje para confirmar disponibilidad y entrega.</small>
+    </div>
+  </aside>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
