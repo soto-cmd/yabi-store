@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="YABI Store - Tienda online moderna y elegante" />
+  <meta name="description" content="YABI Store - Tienda online moderna y elegante en Santa María de Fe" />
   <title>YABI Store</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <div class="topbar">Envíos disponibles · Consultá por disponibilidad y entregas</div>
+  <div class="topbar">Santa María de Fe · Pedidos y consultas por WhatsApp</div>
 
   <header class="site-header">
     <a class="brand" href="#inicio" aria-label="YABI Store inicio">
@@ -27,6 +27,7 @@
     </nav>
 
     <div class="header-actions">
+      <a class="icon-btn" href="https://wa.me/595982408477" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">WA</a>
       <button class="icon-btn" id="searchToggle" aria-label="Buscar">⌕</button>
       <button class="cart-btn" id="cartOpen" aria-label="Abrir carrito">
         <span>Carrito</span>
@@ -43,10 +44,10 @@
         <p>Descubrí una selección cuidada de productos con estilo, calidad y ese toque único que define a YABI Store.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#productos">Ver colección</a>
-          <a class="btn btn-secondary" href="#categorias">Explorar categorías</a>
+          <a class="btn btn-secondary" href="https://wa.me/595982408477?text=Hola%20YABI%20Store,%20quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener">Consultar por WhatsApp</a>
         </div>
         <div class="hero-benefits">
-          <span>Compra simple</span>
+          <span>Santa María de Fe</span>
           <span>Atención personalizada</span>
           <span>Pedidos por WhatsApp</span>
         </div>
@@ -74,35 +75,16 @@
       </div>
 
       <div class="category-grid">
-        <button class="category-card" data-category="Accesorios">
-          <span class="category-icon">✦</span>
-          <strong>Accesorios</strong>
-          <small>Detalles que completan tu look</small>
-        </button>
-        <button class="category-card" data-category="Belleza">
-          <span class="category-icon">♡</span>
-          <strong>Belleza</strong>
-          <small>Pequeños favoritos para vos</small>
-        </button>
-        <button class="category-card" data-category="Hogar">
-          <span class="category-icon">⌂</span>
-          <strong>Hogar</strong>
-          <small>Objetos lindos para tus espacios</small>
-        </button>
-        <button class="category-card" data-category="Regalos">
-          <span class="category-icon">◇</span>
-          <strong>Regalos</strong>
-          <small>Ideas para sorprender</small>
-        </button>
+        <button class="category-card" data-category="Accesorios"><span class="category-icon">✦</span><strong>Accesorios</strong><small>Detalles que completan tu look</small></button>
+        <button class="category-card" data-category="Belleza"><span class="category-icon">♡</span><strong>Belleza</strong><small>Pequeños favoritos para vos</small></button>
+        <button class="category-card" data-category="Hogar"><span class="category-icon">⌂</span><strong>Hogar</strong><small>Objetos lindos para tus espacios</small></button>
+        <button class="category-card" data-category="Regalos"><span class="category-icon">◇</span><strong>Regalos</strong><small>Ideas para sorprender</small></button>
       </div>
     </section>
 
     <section class="products-section" id="productos">
       <div class="section-heading products-heading">
-        <div>
-          <span class="eyebrow">Selección YABI</span>
-          <h2>Productos destacados</h2>
-        </div>
+        <div><span class="eyebrow">Selección YABI</span><h2>Productos destacados</h2></div>
         <div class="filters" role="group" aria-label="Filtrar productos">
           <button class="filter-btn active" data-filter="Todos">Todos</button>
           <button class="filter-btn" data-filter="Accesorios">Accesorios</button>
@@ -111,61 +93,48 @@
           <button class="filter-btn" data-filter="Regalos">Regalos</button>
         </div>
       </div>
-
-      <div class="search-panel" id="searchPanel">
-        <input id="searchInput" type="search" placeholder="Buscar productos..." autocomplete="off" />
-      </div>
-
+      <div class="search-panel" id="searchPanel"><input id="searchInput" type="search" placeholder="Buscar productos..." autocomplete="off" /></div>
       <div class="product-grid" id="productGrid"></div>
     </section>
 
     <section class="promo-section">
-      <div>
-        <span class="eyebrow light">YABI Store</span>
-        <h2>Encontrá ese detalle que estabas buscando.</h2>
-      </div>
-      <a href="#productos" class="btn btn-light">Comprar ahora</a>
+      <div><span class="eyebrow light">YABI Store</span><h2>Encontrá ese detalle que estabas buscando.</h2></div>
+      <a href="https://wa.me/595982408477?text=Hola%20YABI%20Store,%20quisiera%20consultar%20por%20sus%20productos." target="_blank" rel="noopener" class="btn btn-light">Escribinos</a>
     </section>
 
     <section class="about-section" id="nosotros">
       <div class="about-card">
         <span class="eyebrow">Nuestra esencia</span>
         <h2>Una tienda pensada para disfrutar cada elección.</h2>
-        <p>En YABI Store queremos que comprar sea simple, agradable y cercano. Por eso seleccionamos productos lindos, útiles y especiales, con atención personalizada en cada pedido.</p>
+        <p>En YABI Store queremos que comprar sea simple, agradable y cercano. Atendemos desde Santa María de Fe y acompañamos cada pedido de forma personalizada por WhatsApp.</p>
       </div>
       <div class="about-points">
         <article><b>01</b><div><strong>Selección cuidada</strong><p>Productos elegidos pensando en calidad y estilo.</p></div></article>
-        <article><b>02</b><div><strong>Atención cercana</strong><p>Consultá por WhatsApp antes de confirmar tu compra.</p></div></article>
-        <article><b>03</b><div><strong>Compra práctica</strong><p>Armá tu carrito y enviá tu pedido en segundos.</p></div></article>
+        <article><b>02</b><div><strong>Atención cercana</strong><p>Consultá por WhatsApp al +595 982 408477.</p></div></article>
+        <article><b>03</b><div><strong>Ubicación</strong><p>Santa María de Fe, Misiones, Paraguay.</p></div></article>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="footer-brand">
-      <span class="brand-mark">Y</span>
-      <div><strong>YABI Store</strong><small>Detalles que inspiran.</small></div>
-    </div>
+    <div class="footer-brand"><span class="brand-mark">Y</span><div><strong>YABI Store</strong><small>Detalles que inspiran.</small></div></div>
     <div class="footer-links">
-      <a href="#inicio">Inicio</a>
-      <a href="#productos">Productos</a>
-      <a href="#categorias">Categorías</a>
+      <a href="#inicio">Inicio</a><a href="#productos">Productos</a><a href="#categorias">Categorías</a>
+      <a href="https://wa.me/595982408477" target="_blank" rel="noopener">WhatsApp</a>
     </div>
+    <p>Santa María de Fe · +595 982 408477</p>
     <p>© <span id="year"></span> YABI Store. Todos los derechos reservados.</p>
   </footer>
 
   <div class="drawer-overlay" id="drawerOverlay"></div>
   <aside class="cart-drawer" id="cartDrawer" aria-label="Carrito de compras">
-    <div class="cart-header">
-      <div><span class="eyebrow">Tu selección</span><h3>Carrito</h3></div>
-      <button class="close-btn" id="cartClose" aria-label="Cerrar carrito">×</button>
-    </div>
+    <div class="cart-header"><div><span class="eyebrow">Tu selección</span><h3>Carrito</h3></div><button class="close-btn" id="cartClose" aria-label="Cerrar carrito">×</button></div>
     <div class="cart-items" id="cartItems"></div>
     <div class="cart-empty" id="cartEmpty">Tu carrito todavía está vacío.</div>
     <div class="cart-footer">
       <div class="cart-total"><span>Total</span><strong id="cartTotal">Gs. 0</strong></div>
       <button class="btn btn-primary checkout-btn" id="checkoutBtn">Pedir por WhatsApp</button>
-      <small>El pedido se enviará como mensaje para confirmar disponibilidad y entrega.</small>
+      <small>El pedido se enviará como mensaje para confirmar disponibilidad y entrega en Santa María de Fe.</small>
     </div>
   </aside>
 
