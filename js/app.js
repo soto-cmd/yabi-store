@@ -106,8 +106,8 @@ function checkoutWhatsApp() {
   const detailed = cart.map(item => ({ ...products.find(p => p.id === item.id), qty: item.qty }));
   const total = detailed.reduce((sum, item) => sum + item.price * item.qty, 0);
   const lines = detailed.map(item => `• ${item.name} x${item.qty} — ${formatGs(item.price * item.qty)}`);
-  const message = encodeURIComponent(`Hola YABI Store, quisiera consultar por este pedido:\n\n${lines.join('\n')}\n\nTotal estimado: ${formatGs(total)}`);
-  const whatsappNumber = '595XXXXXXXXX';
+  const message = encodeURIComponent(`Hola YABI Store, quisiera consultar por este pedido:\n\n${lines.join('\n')}\n\nTotal estimado: ${formatGs(total)}\n\nUbicación: Santa María de Fe`);
+  const whatsappNumber = '595982408477';
   window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
 }
 
