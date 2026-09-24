@@ -1,15 +1,32 @@
-const products = [
-  { id: 1, name: 'Set de accesorios Rose', category: 'Accesorios', price: 85000, badge: 'Nuevo', code: 'AR' },
-  { id: 2, name: 'Neceser blush', category: 'Belleza', price: 65000, badge: 'Favorito', code: 'NB' },
-  { id: 3, name: 'Vela aromática floral', category: 'Hogar', price: 72000, badge: '', code: 'VF' },
-  { id: 4, name: 'Caja regalo YABI', category: 'Regalos', price: 120000, badge: 'Especial', code: 'YG' },
-  { id: 5, name: 'Aros minimal pink', category: 'Accesorios', price: 55000, badge: '', code: 'AM' },
-  { id: 6, name: 'Kit beauty essentials', category: 'Belleza', price: 98000, badge: 'Top', code: 'KB' },
-  { id: 7, name: 'Difusor decorativo', category: 'Hogar', price: 89000, badge: '', code: 'DD' },
-  { id: 8, name: 'Mini box sorpresa', category: 'Regalos', price: 75000, badge: 'Nuevo', code: 'MS' }
+const defaultProducts = [
+  { id: 1, name: 'Set de accesorios Rose', category: 'Accesorios', price: 85000, badge: 'Nuevo', code: 'AR', image: '', active: true },
+  { id: 2, name: 'Neceser blush', category: 'Belleza', price: 65000, badge: 'Favorito', code: 'NB', image: '', active: true },
+  { id: 3, name: 'Vela aromática floral', category: 'Hogar', price: 72000, badge: '', code: 'VF', image: '', active: true },
+  { id: 4, name: 'Caja regalo YABI', category: 'Regalos', price: 120000, badge: 'Especial', code: 'YG', image: '', active: true },
+  { id: 5, name: 'Aros minimal pink', category: 'Accesorios', price: 55000, badge: '', code: 'AM', image: '', active: true },
+  { id: 6, name: 'Kit beauty essentials', category: 'Belleza', price: 98000, badge: 'Top', code: 'KB', image: '', active: true },
+  { id: 7, name: 'Difusor decorativo', category: 'Hogar', price: 89000, badge: '', code: 'DD', image: '', active: true },
+  { id: 8, name: 'Mini box sorpresa', category: 'Regalos', price: 75000, badge: 'Nuevo', code: 'MS', image: '', active: true }
 ];
 
-const formatGs = value => `Gs. ${value.toLocaleString('es-PY')}`;
+const defaultSettings = {
+  whatsapp: '595982408477',
+  whatsappDisplay: '+595 982 408477',
+  location: 'Santa María de Fe, Misiones, Paraguay'
+};
+
+const getStored = (key, fallback) => {
+  try {
+    const value = JSON.parse(localStorage.getItem(key));
+    return value ?? fallback;
+  } catch {
+    return fallback;
+  }
+};
+
+let products = getStored('yabi-products', defaultProducts).filter(product => product.active !== false);
+const storeSettings = { ...defaultSettings, ...getStored('yabi-settings', {}) };
+const formatGs = value => `Gs. ${Number(value || 0).toLocaleString('es-PY')}`;
 const productGrid = document.getElementById('productGrid');
 const cartItems = document.getElementById('cartItems');
 const cartEmpty = document.getElementById('cartEmpty');
@@ -22,12 +39,19 @@ const searchInput = document.getElementById('searchInput');
 
 let currentFilter = 'Todos';
 let searchTerm = '';
-let cart = JSON.parse(localStorage.getItem('yabi-cart') || '[]');
+let cart = getStored('yabi-cart', []);
+
+function productVisual(product) {
+  if (product.image) {
+    return `<img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" /><span class="product-code-fallback" style="display:none">${product.code || 'Y'}</span>`;
+  }
+  return `<span>${product.code || 'Y'}</span>`;
+}
 
 function renderProducts() {
   const visible = products.filter(product => {
     const filterMatch = currentFilter === 'Todos' || product.category === currentFilter;
-    const searchMatch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const searchMatch = `${product.name} ${product.category}`.toLowerCase().includes(searchTerm.toLowerCase());
     return filterMatch && searchMatch;
   });
 
@@ -35,7 +59,7 @@ function renderProducts() {
     <article class="product-card">
       <div class="product-image">
         ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
-        <span>${product.code}</span>
+        ${productVisual(product)}
       </div>
       <div class="product-info">
         <div class="product-category">${product.category}</div>
@@ -69,6 +93,7 @@ function persistCart() {
 }
 
 function renderCart() {
+  cart = cart.filter(item => products.some(p => p.id === item.id));
   const detailed = cart.map(item => ({ ...products.find(p => p.id === item.id), qty: item.qty }));
   const totalQty = detailed.reduce((sum, item) => sum + item.qty, 0);
   const totalValue = detailed.reduce((sum, item) => sum + item.price * item.qty, 0);
@@ -79,7 +104,7 @@ function renderCart() {
 
   cartItems.innerHTML = detailed.map(item => `
     <div class="cart-item">
-      <div class="cart-thumb">${item.code}</div>
+      <div class="cart-thumb">${item.code || 'Y'}</div>
       <div>
         <h4>${item.name}</h4>
         <small>${item.qty} × ${formatGs(item.price)}</small>
@@ -106,9 +131,8 @@ function checkoutWhatsApp() {
   const detailed = cart.map(item => ({ ...products.find(p => p.id === item.id), qty: item.qty }));
   const total = detailed.reduce((sum, item) => sum + item.price * item.qty, 0);
   const lines = detailed.map(item => `• ${item.name} x${item.qty} — ${formatGs(item.price * item.qty)}`);
-  const message = encodeURIComponent(`Hola YABI Store, quisiera consultar por este pedido:\n\n${lines.join('\n')}\n\nTotal estimado: ${formatGs(total)}\n\nUbicación: Santa María de Fe`);
-  const whatsappNumber = '595982408477';
-  window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+  const message = encodeURIComponent(`Hola YABI Store, quisiera consultar por este pedido:\n\n${lines.join('\n')}\n\nTotal estimado: ${formatGs(total)}\nUbicación: ${storeSettings.location}`);
+  window.open(`https://wa.me/${storeSettings.whatsapp}?text=${message}`, '_blank');
 }
 
 document.querySelectorAll('.filter-btn').forEach(button => {
@@ -142,6 +166,12 @@ document.getElementById('cartClose').addEventListener('click', closeCart);
 drawerOverlay.addEventListener('click', closeCart);
 document.getElementById('checkoutBtn').addEventListener('click', checkoutWhatsApp);
 document.getElementById('year').textContent = new Date().getFullYear();
+
+document.querySelectorAll('[data-store-whatsapp]').forEach(link => {
+  link.href = `https://wa.me/${storeSettings.whatsapp}`;
+});
+document.querySelectorAll('[data-store-location]').forEach(el => el.textContent = storeSettings.location);
+document.querySelectorAll('[data-store-phone]').forEach(el => el.textContent = storeSettings.whatsappDisplay);
 
 renderProducts();
 renderCart();
