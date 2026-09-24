@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YABI Store · Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <header class="admin-header">
+    <div class="brand-wrap">
+      <span class="brand-mark">Y</span>
+      <div><strong>YABI Store</strong><small>Panel Admin local</small></div>
+    </div>
+    <div class="header-actions">
+      <a href="index.html" class="btn secondary">Ver tienda</a>
+      <button id="exportBtn" class="btn secondary">Exportar respaldo</button>
+      <label class="btn secondary file-btn">Importar JSON<input id="importInput" type="file" accept="application/json" hidden></label>
+    </div>
+  </header>
+
+  <main class="admin-shell">
+    <section class="notice">
+      <strong>Modo frontend local</strong>
+      <p>Los cambios se guardan solo en este navegador mediante localStorage. No se sincronizan automáticamente con otros celulares o computadoras.</p>
+    </section>
+
+    <section class="dashboard-grid">
+      <article class="metric"><span>Productos</span><strong id="metricProducts">0</strong></article>
+      <article class="metric"><span>Activos</span><strong id="metricActive">0</strong></article>
+      <article class="metric"><span>Categorías</span><strong id="metricCategories">0</strong></article>
+      <article class="metric"><span>Valor catálogo</span><strong id="metricValue">Gs. 0</strong></article>
+    </section>
+
+    <div class="admin-grid">
+      <section class="panel">
+        <div class="panel-heading">
+          <div><span class="eyebrow">Catálogo</span><h1>Productos</h1></div>
+          <button id="newProductBtn" class="btn primary">+ Nuevo producto</button>
+        </div>
+        <div class="toolbar">
+          <input id="adminSearch" type="search" placeholder="Buscar producto...">
+          <select id="adminCategoryFilter"><option value="Todos">Todas las categorías</option></select>
+        </div>
+        <div id="productList" class="product-list"></div>
+      </section>
+
+      <aside class="panel editor-panel">
+        <div class="panel-heading compact">
+          <div><span class="eyebrow">Editor</span><h2 id="editorTitle">Nuevo producto</h2></div>
+        </div>
+        <form id="productForm" class="form-grid">
+          <input id="productId" type="hidden">
+          <label>Nombre<input id="productName" required></label>
+          <label>Categoría<input id="productCategory" required placeholder="Ej. Accesorios"></label>
+          <label>Precio (Gs.)<input id="productPrice" type="number" min="0" step="1000" required></label>
+          <label>Etiqueta<input id="productBadge" placeholder="Nuevo, Oferta, Top..."></label>
+          <label>Código corto<input id="productCode" maxlength="4" placeholder="AR"></label>
+          <label class="full">URL de imagen<input id="productImage" type="url" placeholder="https://..."></label>
+          <label class="toggle-row full"><input id="productActive" type="checkbox" checked><span>Producto visible en la tienda</span></label>
+          <div class="form-actions full">
+            <button class="btn primary" type="submit">Guardar producto</button>
+            <button class="btn secondary" type="button" id="cancelEditBtn">Limpiar</button>
+            <button class="btn danger" type="button" id="deleteProductBtn" disabled>Eliminar</button>
+          </div>
+        </form>
+
+        <div class="divider"></div>
+
+        <div class="panel-heading compact">
+          <div><span class="eyebrow">Configuración</span><h2>Tienda</h2></div>
+        </div>
+        <form id="settingsForm" class="form-grid">
+          <label class="full">WhatsApp<input id="settingWhatsapp" required></label>
+          <label class="full">WhatsApp visible<input id="settingWhatsappDisplay" required></label>
+          <label class="full">Ubicación<input id="settingLocation" required></label>
+          <div class="form-actions full"><button class="btn primary" type="submit">Guardar configuración</button></div>
+        </form>
+
+        <div class="divider"></div>
+        <button id="resetBtn" class="btn danger ghost full-btn">Restaurar datos de ejemplo</button>
+      </aside>
+    </div>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="js/admin.js"></script>
+</body>
+</html>
